@@ -16,29 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `authentication`
+-- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `authentication`;
+DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `authentication` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `validation` varchar(20) NOT NULL DEFAULT 'VALID',
+  `password` varchar(1000) NOT NULL,
+  `validations` varchar(20) NOT NULL DEFAULT 'VALID',
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `joined_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `authentication`
+-- Dumping data for table `admin`
 --
 
-LOCK TABLES `authentication` WRITE;
-/*!40000 ALTER TABLE `authentication` DISABLE KEYS */;
-/*!40000 ALTER TABLE `authentication` ENABLE KEYS */;
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'mariokas','secret','VALID','Marius','Mariukas','marius@gmail.com','2016-10-06 12:47:08'),(2,'tamosius','nieko','VALID','Tomas','Mikoliunas','tomas@gmail.com','2016-10-06 13:28:35'),(3,'re','$2a$10$OQ.F5IAuMu173UVvpFK18.E0jeU44gS36IOOUfgtBbMjBZWtmXm52','VALID','Vitalija','Remeikaite','vitalija@gmail.com','2016-10-06 13:32:55');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -219,10 +224,10 @@ CREATE TABLE `programmes_prices` (
   `programme_discount_percentage` float(8,2) NOT NULL,
   `programme_promotion_start` varchar(50) NOT NULL DEFAULT 'N / A',
   `programme_promotion_end` varchar(50) NOT NULL DEFAULT 'N / A',
-  `programme_promotion_description` varchar(300) NOT NULL DEFAULT 'N / A',
+  `programme_promotion_description` varchar(1000) NOT NULL DEFAULT 'N / A',
   `updated_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `final_price` float(8,2) NOT NULL,
-  `programme_description` varchar(300) NOT NULL DEFAULT 'N / A'
+  `programme_description` varchar(1000) NOT NULL DEFAULT 'N / A'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -268,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-05 16:06:23
+-- Dump completed on 2016-10-06 14:50:51
